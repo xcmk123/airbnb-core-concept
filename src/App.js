@@ -1,6 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
-
+import { lazy, Suspense } from 'react';
+// import BaseButtonExtendable from './common/button_extendable'
+const BaseButtonExtendable = lazy(() => import('./common/button_extendable'))
+// const BaseButtonCompose = lazy(() => import('./common/button_compose'))
+// const PrimaryButton = lazy(() => import('./common/button/primary'))
 function App() {
   return (
     <div className="App">
@@ -17,6 +21,23 @@ function App() {
         >
           Learn React
         </a>
+        <Suspense fallback={<div>Loading...</div>}>
+          <BaseButtonExtendable>
+          </BaseButtonExtendable>
+          {/* <BaseButtonExtendable>
+            Extendable
+          </BaseButtonExtendable> */}
+        </Suspense>
+        {/* <Suspense fallback={<div>Loading...</div>}>
+          <BaseButtonCompose>
+            BaseButtonCompose
+          </BaseButtonCompose>
+        </Suspense>
+        <Suspense fallback={<div>Loading...</div>}>
+          <PrimaryButton>
+            PrimaryButton
+          </PrimaryButton>
+        </Suspense> */}
       </header>
     </div>
   );
