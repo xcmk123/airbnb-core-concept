@@ -1,15 +1,16 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
-
 import { css, jsx } from '@emotion/react'
-import React from 'react'
 
-const extendable = (Component, props) => {
-  console.log(props)
-  return Component
+const extendable = (Component, styles) => {
+  return (props) => {
+    return <Component styles={styles()}>
+        {props.children} 
+      </Component>
+  }
 }
 
-function BaseButton() {
+function BaseButton({styles, children}) {
   return (
     <button
       css={css`
@@ -19,9 +20,18 @@ function BaseButton() {
         border: none;
         border-radius: 5px;
         box-sizing: border-box;
+        ${styles.button}
       `}
     >
+      {children}
     </button>
   )
 }
-export default extendable(BaseButton, { button: { background: 'red', color: 'white'}})
+export default extendable(BaseButton, 
+  () => ({ 
+    button: { 
+      background: 'red', 
+      color: 'white',
+    }
+  })
+)

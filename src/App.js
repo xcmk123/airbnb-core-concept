@@ -3,8 +3,8 @@ import './App.css';
 import { lazy, Suspense } from 'react';
 // import BaseButtonExtendable from './common/button_extendable'
 const BaseButtonExtendable = lazy(() => import('./common/button_extendable'))
-// const BaseButtonCompose = lazy(() => import('./common/button_compose'))
-// const PrimaryButton = lazy(() => import('./common/button/primary'))
+const BaseButtonCompose = lazy(() => import('./common/button_compose'))
+const PrimaryButton = lazy(() => import('./common/button/primary'))
 function App() {
   return (
     <div className="App">
@@ -23,10 +23,8 @@ function App() {
         </a>
         <Suspense fallback={<div>Loading...</div>}>
           <BaseButtonExtendable>
+            Airbnb
           </BaseButtonExtendable>
-          {/* <BaseButtonExtendable>
-            Extendable
-          </BaseButtonExtendable> */}
         </Suspense>
         {/* <Suspense fallback={<div>Loading...</div>}>
           <BaseButtonCompose>

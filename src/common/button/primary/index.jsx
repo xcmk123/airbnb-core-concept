@@ -5,14 +5,12 @@ import BaseButton from '..'
 const PrimaryButton = ({children}) => {
   return (
     <BaseButton 
-    button= {
-      css`
-        background-color: red;
-        &:hover {
+      button= {
+        css`
+          background-color: red;
           color: white;
-        }
-      `
-    }
+        `
+      }
     >
       {children}
     </BaseButton>
